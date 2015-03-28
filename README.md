@@ -24,7 +24,7 @@ pod "Aubergine"
 
 ## Author
 
-Tom Jowett, tom@tomjowett.com
+Tom Jowett, @tjrebase
 
 ## License
 
