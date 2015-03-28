@@ -1,0 +1,1 @@
+../../../../../Aubergine/Classes/AUBPromotion.h
