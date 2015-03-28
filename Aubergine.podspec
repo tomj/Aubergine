@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Aubergine"
-  s.version          = "0.0.1"
+  s.version          = "0.0.2"
   s.summary          = "An iOS SDK for the Uber API"
   s.homepage         = "https://github.com/tomj/Aubergine"
   s.license          = 'MIT'
