@@ -2,6 +2,8 @@
 
 Aubergine is an iOS SDK for the [Uber API](https://developer.uber.com).
 
+Aubergine uses the [Mantle](https://github.com/Mantle/Mantle) framework for JSON serialization in conjunction with [AFNetworking](https://github.com/AFNetworking/AFNetworking).  Feel free to submit PR's and we'd love to hear if you're using it in your own project.
+
 [![Build Status](https://travis-ci.org/tomj/Aubergine.svg?branch=master)](https://travis-ci.org/tomj/Aubergine)
 [![Version](https://img.shields.io/cocoapods/v/Aubergine.svg?style=flat)](http://cocoapods.org/pods/Aubergine)
 [![License](https://img.shields.io/cocoapods/l/Aubergine.svg?style=flat)](http://cocoapods.org/pods/Aubergine)
@@ -11,7 +13,21 @@ Aubergine is an iOS SDK for the [Uber API](https://developer.uber.com).
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+```objc
+#import <Aubergine/Aubergine.h>
+
+[[AUBRequest sharedInstance] setServerToken:@"YOUR_SERVER_TOKEN"];
+CLLocationCoordinate2D location = CLLocationCoordinate2DMake(40.7356, -73.9906);
+[AUBRequest getProductsForLocation:location success:^(NSArray *result) {
+    NSLog(@"%@", result);
+} failure:^(NSError *error) {
+    NSLog(@"%@", error);
+}];
+```
+
 ## Requirements
+
+iOS 6+
 
 ## Installation
 
@@ -24,7 +40,7 @@ pod "Aubergine"
 
 ## Author
 
-Tom Jowett, @tjrebase
+Tom Jowett, [@tjrebase](https://www.twitter.com/tjrebase)
 
 ## License
 
