@@ -27,8 +27,14 @@
 		16AC6E0B3C9561DB8C104189 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAB8668B66A55DEAFCBFDD9 /* Foundation.framework */; };
 		19DF183A21CD2AF20FD18ADE /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = DA0CC8B4924B59341EBA665C /* UIRefreshControl+AFNetworking.h */; };
 		1C3BFDAEE6EF84858C6ED7FD /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D127CD842532653152836ADC /* AFURLConnectionOperation.m */; };
-		2011C1591AC7CD4200B8B899 /* AUBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2011C1561AC7CD4200B8B899 /* AUBUser.m */; };
-		2011C15A1AC7CD4200B8B899 /* AUBUserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2011C1581AC7CD4200B8B899 /* AUBUserHistory.m */; };
+		20BB12FD1AC7CE870029575C /* AUBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 20BB12F91AC7CE870029575C /* AUBUser.h */; };
+		20BB12FE1AC7CE870029575C /* AUBUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 20BB12F91AC7CE870029575C /* AUBUser.h */; };
+		20BB12FF1AC7CE870029575C /* AUBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BB12FA1AC7CE870029575C /* AUBUser.m */; };
+		20BB13001AC7CE870029575C /* AUBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BB12FA1AC7CE870029575C /* AUBUser.m */; };
+		20BB13011AC7CE870029575C /* AUBUserHistory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20BB12FB1AC7CE870029575C /* AUBUserHistory.h */; };
+		20BB13021AC7CE870029575C /* AUBUserHistory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20BB12FB1AC7CE870029575C /* AUBUserHistory.h */; };
+		20BB13031AC7CE870029575C /* AUBUserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BB12FC1AC7CE870029575C /* AUBUserHistory.m */; };
+		20BB13041AC7CE870029575C /* AUBUserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BB12FC1AC7CE870029575C /* AUBUserHistory.m */; };
 		2277E6A721AA731BCCB5793E /* NSObject+MTLComparisonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1FF1F2E433321DE5CD520A /* NSObject+MTLComparisonAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		2298B7E72750FB1210F7AEC4 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F6CA63D052B88C416287CB /* UIRefreshControl+AFNetworking.m */; };
 		28419CFF0D972613E7EBA5C5 /* MTLValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF46E41A7178234C876C422 /* MTLValueTransformer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -277,10 +283,10 @@
 		1925DAE3FABE99CAE117D571 /* Pods-Tests-AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-Tests-AFNetworking-dummy.m"; path = "../Pods-Tests-AFNetworking/Pods-Tests-AFNetworking-dummy.m"; sourceTree = "<group>"; };
 		1A0D50283961031668380DE1 /* Pods-Aubergine-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Aubergine-dummy.m"; sourceTree = "<group>"; };
 		1E5F7185273298A3E9B702CD /* Pods-Tests-AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-Tests-AFNetworking-prefix.pch"; path = "../Pods-Tests-AFNetworking/Pods-Tests-AFNetworking-prefix.pch"; sourceTree = "<group>"; };
-		2011C1551AC7CD4200B8B899 /* AUBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUBUser.h; sourceTree = "<group>"; };
-		2011C1561AC7CD4200B8B899 /* AUBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUBUser.m; sourceTree = "<group>"; };
-		2011C1571AC7CD4200B8B899 /* AUBUserHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUBUserHistory.h; sourceTree = "<group>"; };
-		2011C1581AC7CD4200B8B899 /* AUBUserHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUBUserHistory.m; sourceTree = "<group>"; };
+		20BB12F91AC7CE870029575C /* AUBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AUBUser.h; path = Aubergine/Classes/AUBUser.h; sourceTree = "<group>"; };
+		20BB12FA1AC7CE870029575C /* AUBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AUBUser.m; path = Aubergine/Classes/AUBUser.m; sourceTree = "<group>"; };
+		20BB12FB1AC7CE870029575C /* AUBUserHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AUBUserHistory.h; path = Aubergine/Classes/AUBUserHistory.h; sourceTree = "<group>"; };
+		20BB12FC1AC7CE870029575C /* AUBUserHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AUBUserHistory.m; path = Aubergine/Classes/AUBUserHistory.m; sourceTree = "<group>"; };
 		2723DFFD6C87C4D3205E9833 /* MTLManagedObjectAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLManagedObjectAdapter.h; path = Mantle/MTLManagedObjectAdapter.h; sourceTree = "<group>"; };
 		286BC61A3F43B2743828059D /* EXTScope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = Mantle/extobjc/EXTScope.h; sourceTree = "<group>"; };
 		29CC58A87EE7967157255946 /* MTLJSONAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLJSONAdapter.h; path = Mantle/MTLJSONAdapter.h; sourceTree = "<group>"; };
@@ -662,6 +668,10 @@
 		8D4003AE3E09CBDB0458AFA4 /* Aubergine */ = {
 			isa = PBXGroup;
 			children = (
+				20BB12F91AC7CE870029575C /* AUBUser.h */,
+				20BB12FA1AC7CE870029575C /* AUBUser.m */,
+				20BB12FB1AC7CE870029575C /* AUBUserHistory.h */,
+				20BB12FC1AC7CE870029575C /* AUBUserHistory.m */,
 				8180B56AB98ACCA3DC96A56D /* AUBPriceEstimate.h */,
 				7B9C7D065C8AE194EFD3F1DB /* AUBPriceEstimate.m */,
 				D36644F4A7C4533124D13475 /* AUBProduct.h */,
@@ -672,10 +682,6 @@
 				D2AFC5B0F2BF192B24375DFB /* AUBRequest.m */,
 				81069E0D8ED20B4185D7F282 /* AUBTimeEstimate.h */,
 				FB828FBC71384515D56F3546 /* AUBTimeEstimate.m */,
-				2011C1551AC7CD4200B8B899 /* AUBUser.h */,
-				2011C1561AC7CD4200B8B899 /* AUBUser.m */,
-				2011C1571AC7CD4200B8B899 /* AUBUserHistory.h */,
-				2011C1581AC7CD4200B8B899 /* AUBUserHistory.m */,
 				3FAA1D28704413B528A61304 /* Aubergine.h */,
 				786ECBABD6A55B4A389376AE /* Support Files */,
 			);
@@ -822,12 +828,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20BB12FD1AC7CE870029575C /* AUBUser.h in Headers */,
 				0A09A1363F75F9C2F78EE2F9 /* AUBPriceEstimate.h in Headers */,
 				87C1F0DE4D69BA430B7C603D /* AUBProduct.h in Headers */,
 				C220B1F9C75D70496A880489 /* AUBPromotion.h in Headers */,
 				508808C40121702674B855B1 /* AUBRequest.h in Headers */,
 				35612A6F694E1EB27B00B994 /* AUBTimeEstimate.h in Headers */,
 				3EBF6D2B51F1297A5271615E /* Aubergine.h in Headers */,
+				20BB13011AC7CE870029575C /* AUBUserHistory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,12 +869,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20BB12FE1AC7CE870029575C /* AUBUser.h in Headers */,
 				4EA6971D1C350786F188CEE1 /* AUBPriceEstimate.h in Headers */,
 				642DE55FBD82DB6037D2A5B4 /* AUBProduct.h in Headers */,
 				E9AE80A8485AD43E1CBAEFE9 /* AUBPromotion.h in Headers */,
 				0FF08B4B2CEA0F788F42EDDF /* AUBRequest.h in Headers */,
 				026EE505FA5A391777175EA9 /* AUBTimeEstimate.h in Headers */,
 				B69598B59113A4DFD01622CE /* Aubergine.h in Headers */,
+				20BB13021AC7CE870029575C /* AUBUserHistory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1107,6 +1117,8 @@
 				53532141DA4A4194DA5D830E /* AUBPriceEstimate.m in Sources */,
 				D74D5AD47170EF5426BAEFF2 /* AUBProduct.m in Sources */,
 				9E68001F91DC341FFB3E0082 /* AUBPromotion.m in Sources */,
+				20BB13001AC7CE870029575C /* AUBUser.m in Sources */,
+				20BB13041AC7CE870029575C /* AUBUserHistory.m in Sources */,
 				5D16B828FF07790D39533F64 /* AUBRequest.m in Sources */,
 				7CBE839E279099EFAFF1CF16 /* AUBTimeEstimate.m in Sources */,
 				B58E40262548EEEF33FD97E8 /* Pods-Tests-Aubergine-dummy.m in Sources */,
@@ -1167,6 +1179,8 @@
 				67B3FD0B126FBFE348A89CF5 /* AUBPriceEstimate.m in Sources */,
 				77ADE51C91C760AAC5EA88D7 /* AUBProduct.m in Sources */,
 				F87E1BC1EA967AB262BE51DC /* AUBPromotion.m in Sources */,
+				20BB12FF1AC7CE870029575C /* AUBUser.m in Sources */,
+				20BB13031AC7CE870029575C /* AUBUserHistory.m in Sources */,
 				FE210EC95759534EADF45D31 /* AUBRequest.m in Sources */,
 				950D5609176D24FCA7E4EB95 /* AUBTimeEstimate.m in Sources */,
 				90821B9AB69AFE5B41FEB622 /* Pods-Aubergine-Aubergine-dummy.m in Sources */,
@@ -1233,8 +1247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F12BC362AAC629BF45FD344 /* Pods-Aubergine-dummy.m in Sources */,
-				2011C15A1AC7CD4200B8B899 /* AUBUserHistory.m in Sources */,
-				2011C1591AC7CD4200B8B899 /* AUBUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

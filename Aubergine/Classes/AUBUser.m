@@ -1,6 +1,5 @@
 //
 //  AUBUser.m
-//  Pods
 //
 //  Created by Tom Jowett on 28/03/2015.
 //
