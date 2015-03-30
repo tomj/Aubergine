@@ -11,9 +11,10 @@
 @interface AUBTimeEstimate : MTLModel <MTLJSONSerializing>
 
 /// Unique identifier representing a specific product for a given latitude & longitude.
-/// For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles.
+/// For example, uberX in San Francisco will have a different productID than uberX in Los Angeles.
 @property (nonatomic, copy) NSString *productID;
 
+/// Display name of product.
 @property (nonatomic, copy) NSString *displayName;
 
 /// ETA for the product (in seconds). Always show estimate in minutes.

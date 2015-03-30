@@ -28,7 +28,9 @@ NSString *kAPIVersion = @"v1";
     return _sharedInstance;
 }
 
-+ (void)getProductsForLocation:(CLLocationCoordinate2D)location success:(AUBRequestSuccess)success failure:(AUBRequestFailure)failure {
++ (void)getProductsForLocation:(CLLocationCoordinate2D)location
+                       success:(AUBRequestSuccess)success
+                       failure:(AUBRequestFailure)failure {
 
     NSParameterAssert(success);
     NSParameterAssert(failure);
@@ -56,7 +58,10 @@ NSString *kAPIVersion = @"v1";
     }];
 }
 
-+ (void)getPriceEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation endLocation:(CLLocationCoordinate2D)endLocation success:(AUBRequestSuccess)success failure:(AUBRequestFailure)failure {
++ (void)getPriceEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation
+                              endLocation:(CLLocationCoordinate2D)endLocation
+                                  success:(AUBRequestSuccess)success
+                                  failure:(AUBRequestFailure)failure {
     
     NSParameterAssert(success);
     NSParameterAssert(failure);
@@ -89,7 +94,11 @@ NSString *kAPIVersion = @"v1";
     }];
 }
 
-+ (void)getTimeEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation endLocation:(CLLocationCoordinate2D)endLocation success:(AUBRequestSuccess)success failure:(AUBRequestFailure)failure {
++ (void)getTimeEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation
+                               productID:(NSString *)productID
+                            customerUUID:(NSString *)customerUUID
+                                 success:(AUBRequestSuccess)success
+                                 failure:(AUBRequestFailure)failure {
     
     NSParameterAssert(success);
     NSParameterAssert(failure);
@@ -98,10 +107,10 @@ NSString *kAPIVersion = @"v1";
                        stringByAppendingPathComponent:@"estimates"]
                        stringByAppendingPathComponent:@"time"];
     
-    NSDictionary *params = @{ @"start_latitude"  : @(startLocation.latitude),
-                              @"start_longitude" : @(startLocation.longitude),
-                              @"end_latitude"    : @(endLocation.latitude),
-                              @"end_longitude"   : @(endLocation.longitude) };
+    NSMutableDictionary *params = @{ @"start_latitude"  : @(startLocation.latitude),
+                                     @"start_longitude" : @(startLocation.longitude) }.mutableCopy;
+    if (customerUUID && [customerUUID isKindOfClass:[NSString class]]) [params setObject:customerUUID forKey:@"customer_uuid"];
+    if (productID && [productID isKindOfClass:[NSString class]]) [params setObject:productID forKey:@"product_id"];
     
     [[[self class] manager] GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *timeEstimatesJSON = responseObject[@"times"];
@@ -122,7 +131,10 @@ NSString *kAPIVersion = @"v1";
     }];
 }
 
-+ (void)getPromotionsForStartLocation:(CLLocationCoordinate2D)startLocation endLocation:(CLLocationCoordinate2D)endLocation success:(AUBRequestSuccess)success failure:(AUBRequestFailure)failure {
++ (void)getPromotionsForStartLocation:(CLLocationCoordinate2D)startLocation
+                          endLocation:(CLLocationCoordinate2D)endLocation
+                              success:(AUBRequestSuccess)success
+                              failure:(AUBRequestFailure)failure {
     
     NSParameterAssert(success);
     NSParameterAssert(failure);

@@ -26,8 +26,10 @@ typedef void (^AUBRequestFailure) (NSError *error);
                                   success:(AUBRequestSuccess)success
                                   failure:(AUBRequestFailure)failure;
 
+/// Return an array of AUBTimeEstimate objects if successful
 + (void)getTimeEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation
-                             endLocation:(CLLocationCoordinate2D)endLocation
+                               productID:(NSString *)productID
+                            customerUUID:(NSString *)customerUUID
                                  success:(AUBRequestSuccess)success
                                  failure:(AUBRequestFailure)failure;
 
