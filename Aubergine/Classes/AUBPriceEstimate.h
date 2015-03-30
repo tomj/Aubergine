@@ -17,6 +17,7 @@
 /// ISO 4217 currency code.
 @property (nonatomic, copy) NSString *currencyCode;
 
+/// Display name of product.
 @property (nonatomic, copy) NSString *displayName;
 
 /// Formatted string of estimate in local currency of the start location.

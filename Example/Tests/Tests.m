@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 #import <Aubergine/Aubergine.h>
-#import <AFNetworking/AFNetworking.h>
 
 static const NSTimeInterval kConnectionTimeout = 20.0;
 
@@ -65,16 +64,18 @@ static const NSTimeInterval kConnectionTimeout = 20.0;
     XCTestExpectation *expectation = [self expectationWithDescription:@"success"];
     
     CLLocationCoordinate2D startLocation = CLLocationCoordinate2DMake(-33.9461, 151.1772);
-    CLLocationCoordinate2D endLocation = CLLocationCoordinate2DMake(-33.8681, 151.2075);
     
-    [AUBRequest getTimeEstimatesForStartLocation:startLocation endLocation:endLocation success:^(NSArray *result) {
-        XCTAssert(result, @"Pass");
-        [expectation fulfill];
-    } failure:^(NSError *error) {
-        NSLog(@"%@", error);
-        XCTAssert(NO, @"Fail");
-        [expectation fulfill];
-    }];
+    [AUBRequest getTimeEstimatesForStartLocation:startLocation
+                                       productID:nil
+                                    customerUUID:nil
+                                         success:^(NSArray *result) {
+                                             XCTAssert(result, @"Pass");
+                                             [expectation fulfill];
+                                         } failure:^(NSError *error) {
+                                             NSLog(@"%@", error);
+                                             XCTAssert(NO, @"Fail");
+                                             [expectation fulfill];
+                                         }];
     
     [self waitForExpectationsWithTimeout:kConnectionTimeout handler:^(NSError *error) {
         if (error) XCTAssertFalse(@"failed");
