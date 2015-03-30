@@ -23,17 +23,4 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
-+ (NSValueTransformer *)HTMLURLJSONTransformer {
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-}
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error {
-    self = [super initWithDictionary:dictionaryValue error:error];
-    if (self) {
-        _retrievedAt = [NSDate date];
-    }
-    return self;
-}
-
-
 @end
