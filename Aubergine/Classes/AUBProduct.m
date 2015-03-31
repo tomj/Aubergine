@@ -23,4 +23,12 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
+- (void)setNilValueForKey:(NSString *)key {
+    if ([key isEqualToString:@"capacity"]) {
+        self.capacity = 0;
+    } else {
+        [super setNilValueForKey:key];
+    }
+}
+
 @end
