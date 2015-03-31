@@ -6,7 +6,6 @@
 //
 
 #import <Mantle/Mantle.h>
-#import <UIKit/UIKit.h>
 
 @interface AUBPriceEstimate : MTLModel <MTLJSONSerializing>
 
@@ -32,12 +31,12 @@
 
 /// Expected surge multiplier. Surge is active if surge_multiplier is greater than 1.
 /// Price estimate already factors in the surge multiplier.
-@property (nonatomic, assign) CGFloat surgeMultiplier;
+@property (nonatomic, assign) double surgeMultiplier;
 
 /// Expected activity duration (in seconds). Always show duration in minutes.
 @property (nonatomic, assign) NSUInteger duration;
 
 /// Expected activity distance (in miles).
-@property (nonatomic, assign) CGFloat distance;
+@property (nonatomic, assign) double distance;
 
 @end
