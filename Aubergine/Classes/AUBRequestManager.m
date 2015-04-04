@@ -7,7 +7,7 @@
 
 #import "AUBRequestManager.h"
 
-#import <AFNetworking/AFNetworking.h>
+
 
 #import "AUBProduct.h"
 #import "AUBPriceEstimate.h"
@@ -19,16 +19,20 @@ NSString *kAPIVersion = @"v1";
 
 @implementation AUBRequestManager
 
-+ (instancetype)sharedInstance {
-    static id _sharedInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedInstance = [[self alloc] init];
-    });    
-    return _sharedInstance;
+- (instancetype)initWithServerToken:(NSString *)serverToken {
+    NSParameterAssert(serverToken);
+    NSURL *url = [NSURL URLWithString:kURL];
+    self = [super initWithBaseURL:url];
+    if (self) {
+        [super setResponseSerializer:[AFJSONResponseSerializer serializer]];
+        [super setRequestSerializer:[AFJSONRequestSerializer serializer]];
+        NSString *formattedServerToken = [NSString stringWithFormat:@"Token %@", serverToken];
+        [super.requestSerializer setValue:formattedServerToken forHTTPHeaderField:@"Authorization"];
+    }
+    return self;
 }
 
-+ (void)getProductsForLocation:(CLLocationCoordinate2D)location
+- (void)getProductsForLocation:(CLLocationCoordinate2D)location
                        success:(AUBRequestManagerSuccess)success
                        failure:(AUBRequestManagerFailure)failure {
 
@@ -39,7 +43,7 @@ NSString *kAPIVersion = @"v1";
     NSDictionary *params = @{ @"latitude"  : @(location.latitude),
                               @"longitude" : @(location.longitude) };
     
-    [[[self class] manager] GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *productsJSON = responseObject[@"products"];
         
         NSMutableArray *products __block = [[NSMutableArray alloc] init];
@@ -58,7 +62,7 @@ NSString *kAPIVersion = @"v1";
     }];
 }
 
-+ (void)getPriceEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation
+- (void)getPriceEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation
                               endLocation:(CLLocationCoordinate2D)endLocation
                                   success:(AUBRequestManagerSuccess)success
                                   failure:(AUBRequestManagerFailure)failure {
@@ -75,7 +79,7 @@ NSString *kAPIVersion = @"v1";
                               @"end_latitude"    : @(endLocation.latitude),
                               @"end_longitude"   : @(endLocation.longitude) };
     
-    [[[self class] manager] GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *priceEstimatesJSON = responseObject[@"prices"];
         
         NSMutableArray *priceEstimates __block = [[NSMutableArray alloc] init];
@@ -94,7 +98,7 @@ NSString *kAPIVersion = @"v1";
     }];
 }
 
-+ (void)getTimeEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation
+- (void)getTimeEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation
                                productID:(NSString *)productID
                             customerUUID:(NSString *)customerUUID
                                  success:(AUBRequestManagerSuccess)success
@@ -112,7 +116,7 @@ NSString *kAPIVersion = @"v1";
     if (customerUUID && [customerUUID isKindOfClass:[NSString class]]) [params setObject:customerUUID forKey:@"customer_uuid"];
     if (productID && [productID isKindOfClass:[NSString class]]) [params setObject:productID forKey:@"product_id"];
     
-    [[[self class] manager] GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *timeEstimatesJSON = responseObject[@"times"];
         
         NSMutableArray *timeEstimates __block = [[NSMutableArray alloc] init];
@@ -131,7 +135,7 @@ NSString *kAPIVersion = @"v1";
     }];
 }
 
-+ (void)getPromotionsForStartLocation:(CLLocationCoordinate2D)startLocation
+- (void)getPromotionsForStartLocation:(CLLocationCoordinate2D)startLocation
                           endLocation:(CLLocationCoordinate2D)endLocation
                               success:(AUBRequestManagerSuccess)success
                               failure:(AUBRequestManagerFailure)failure {
@@ -147,7 +151,7 @@ NSString *kAPIVersion = @"v1";
                               @"end_latitude"    : @(endLocation.latitude),
                               @"end_longitude"   : @(endLocation.longitude) };
     
-    [[[self class] manager] GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *error = nil;
         AUBPromotion *promotion = [MTLJSONAdapter modelOfClass:AUBPromotion.class fromJSONDictionary:responseObject error:&error];
         NSMutableArray *promotions = [[NSMutableArray alloc] init];
@@ -160,18 +164,6 @@ NSString *kAPIVersion = @"v1";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
-}
-
-#pragma mark - Private
-
-+ (AFHTTPRequestOperationManager *)manager {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSAssert([[AUBRequestManager sharedInstance] serverToken], @"Server token must be provided for requests");
-    NSString *serverToken = [NSString stringWithFormat:@"Token %@", [[AUBRequestManager sharedInstance] serverToken]];
-    [manager.requestSerializer setValue:serverToken forHTTPHeaderField:@"Authorization"];
-    return manager;
 }
 
 @end

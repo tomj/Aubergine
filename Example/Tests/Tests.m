@@ -12,19 +12,26 @@
 static const NSTimeInterval kConnectionTimeout = 20.0;
 
 @interface AubergineExampleTests : XCTestCase
+@property (nonatomic, strong) AUBRequestManager *requestManager;
 @end
 
 @implementation AubergineExampleTests
 
 - (void)setUp {
-    [[AUBRequest sharedInstance] setServerToken:@"JynTiihu9Kf-aORf4XVqY28NmgzBm0fXm6dMI9Tp"];
+    [super setUp];
+    self.requestManager = [[AUBRequestManager alloc] initWithServerToken:@"JynTiihu9Kf-aORf4XVqY28NmgzBm0fXm6dMI9Tp"];
+}
+
+- (void)tearDown {
+    self.requestManager = nil;
+    [super tearDown];
 }
 
 - (void)testProductsRequest {
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"success"];
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake(37.7759792, -122.41823);
-    [AUBRequest getProductsForLocation:location success:^(NSArray *result) {
+    [self.requestManager getProductsForLocation:location success:^(NSArray *result) {
         XCTAssert(result, @"Pass");
         [expectation fulfill];
     } failure:^(NSError *error) {
@@ -45,7 +52,7 @@ static const NSTimeInterval kConnectionTimeout = 20.0;
     CLLocationCoordinate2D startLocation = CLLocationCoordinate2DMake(-33.9461, 151.1772);
     CLLocationCoordinate2D endLocation = CLLocationCoordinate2DMake(-33.8681, 151.2075);
     
-    [AUBRequest getPriceEstimatesForStartLocation:startLocation endLocation:endLocation success:^(NSArray *result) {
+    [self.requestManager getPriceEstimatesForStartLocation:startLocation endLocation:endLocation success:^(NSArray *result) {
         XCTAssert(result, @"Pass");
         [expectation fulfill];
     } failure:^(NSError *error) {
@@ -65,17 +72,17 @@ static const NSTimeInterval kConnectionTimeout = 20.0;
     
     CLLocationCoordinate2D startLocation = CLLocationCoordinate2DMake(-33.9461, 151.1772);
     
-    [AUBRequest getTimeEstimatesForStartLocation:startLocation
-                                       productID:nil
-                                    customerUUID:nil
-                                         success:^(NSArray *result) {
-                                             XCTAssert(result, @"Pass");
-                                             [expectation fulfill];
-                                         } failure:^(NSError *error) {
-                                             NSLog(@"%@", error);
-                                             XCTAssert(NO, @"Fail");
-                                             [expectation fulfill];
-                                         }];
+    [self.requestManager getTimeEstimatesForStartLocation:startLocation
+                                              productID:nil
+                                           customerUUID:nil
+                                                success:^(NSArray *result) {
+                                                    XCTAssert(result, @"Pass");
+                                                    [expectation fulfill];
+                                                } failure:^(NSError *error) {
+                                                    NSLog(@"%@", error);
+                                                    XCTAssert(NO, @"Fail");
+                                                    [expectation fulfill];
+                                                }];
     
     [self waitForExpectationsWithTimeout:kConnectionTimeout handler:^(NSError *error) {
         if (error) XCTAssertFalse(@"failed");
@@ -89,7 +96,7 @@ static const NSTimeInterval kConnectionTimeout = 20.0;
     CLLocationCoordinate2D startLocation = CLLocationCoordinate2DMake(-33.9461, 151.1772);
     CLLocationCoordinate2D endLocation = CLLocationCoordinate2DMake(-33.8681, 151.2075);
     
-    [AUBRequest getPromotionsForStartLocation:startLocation endLocation:endLocation success:^(NSArray *result) {
+    [self.requestManager getPromotionsForStartLocation:startLocation endLocation:endLocation success:^(NSArray *result) {
         XCTAssert(result, @"Pass");
         [expectation fulfill];
     } failure:^(NSError *error) {
