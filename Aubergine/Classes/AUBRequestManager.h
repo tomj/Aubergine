@@ -12,7 +12,16 @@
 typedef void (^AUBRequestManagerSuccess) (NSArray *result);
 typedef void (^AUBRequestManagerFailure) (NSError *error);
 
+static NSString *const kAUBRequestManagerServerTokenKey = @"AUBRequestManagerServerTokenKey";
+
 @interface AUBRequestManager : AFHTTPRequestOperationManager
+
+/**
+ *  @return An AUBRequestManager.  Note the the application's info.plist file must contain
+ *          an object for the kAUBRequestManagerServerTokenKey key, otherwise an assertion
+ *          will go boom.
+ */
++ (instancetype)sharedInstance;
 
 - (instancetype)initWithServerToken:(NSString *)serverToken;
 

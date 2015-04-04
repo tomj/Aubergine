@@ -20,7 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Aubergine (0.0.2):
+  - Aubergine (0.0.4):
     - AFNetworking (~> 2.4)
     - Mantle (~> 1.5.4)
   - Mantle (1.5.4):
@@ -36,7 +36,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
-  Aubergine: 81119d1adad3f1477d5967796d72e73dcb00c056
+  Aubergine: 45fce9feac2882e9c2c4c36025d0466c48ebed6a
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0

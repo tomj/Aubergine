@@ -52,7 +52,7 @@
 #define COCOAPODS_POD_AVAILABLE_Aubergine
 #define COCOAPODS_VERSION_MAJOR_Aubergine 0
 #define COCOAPODS_VERSION_MINOR_Aubergine 0
-#define COCOAPODS_VERSION_PATCH_Aubergine 2
+#define COCOAPODS_VERSION_PATCH_Aubergine 4
 
 // Mantle
 #define COCOAPODS_POD_AVAILABLE_Mantle

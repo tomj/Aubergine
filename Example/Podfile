@@ -1,9 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Aubergine', :exclusive => true do
-  pod "Aubergine"
+    pod "Aubergine"
 end
 
 target 'Tests', :exclusive => true do
-  pod "Aubergine"
+    pod "Aubergine"
 end
