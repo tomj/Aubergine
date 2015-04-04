@@ -1,11 +1,11 @@
 //
-//  AUBRequest.m
+//  AUBRequestManager.m
 //
 //  Created by Tom Jowett on 28/03/2015.
 //
 //
 
-#import "AUBRequest.h"
+#import "AUBRequestManager.h"
 
 #import <AFNetworking/AFNetworking.h>
 
@@ -17,7 +17,7 @@
 NSString *kURL = @"https://api.uber.com";
 NSString *kAPIVersion = @"v1";
 
-@implementation AUBRequest
+@implementation AUBRequestManager
 
 + (instancetype)sharedInstance {
     static id _sharedInstance = nil;
@@ -29,8 +29,8 @@ NSString *kAPIVersion = @"v1";
 }
 
 + (void)getProductsForLocation:(CLLocationCoordinate2D)location
-                       success:(AUBRequestSuccess)success
-                       failure:(AUBRequestFailure)failure {
+                       success:(AUBRequestManagerSuccess)success
+                       failure:(AUBRequestManagerFailure)failure {
 
     NSParameterAssert(success);
     NSParameterAssert(failure);
@@ -60,8 +60,8 @@ NSString *kAPIVersion = @"v1";
 
 + (void)getPriceEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation
                               endLocation:(CLLocationCoordinate2D)endLocation
-                                  success:(AUBRequestSuccess)success
-                                  failure:(AUBRequestFailure)failure {
+                                  success:(AUBRequestManagerSuccess)success
+                                  failure:(AUBRequestManagerFailure)failure {
     
     NSParameterAssert(success);
     NSParameterAssert(failure);
@@ -97,8 +97,8 @@ NSString *kAPIVersion = @"v1";
 + (void)getTimeEstimatesForStartLocation:(CLLocationCoordinate2D)startLocation
                                productID:(NSString *)productID
                             customerUUID:(NSString *)customerUUID
-                                 success:(AUBRequestSuccess)success
-                                 failure:(AUBRequestFailure)failure {
+                                 success:(AUBRequestManagerSuccess)success
+                                 failure:(AUBRequestManagerFailure)failure {
     
     NSParameterAssert(success);
     NSParameterAssert(failure);
@@ -133,8 +133,8 @@ NSString *kAPIVersion = @"v1";
 
 + (void)getPromotionsForStartLocation:(CLLocationCoordinate2D)startLocation
                           endLocation:(CLLocationCoordinate2D)endLocation
-                              success:(AUBRequestSuccess)success
-                              failure:(AUBRequestFailure)failure {
+                              success:(AUBRequestManagerSuccess)success
+                              failure:(AUBRequestManagerFailure)failure {
     
     NSParameterAssert(success);
     NSParameterAssert(failure);
@@ -168,8 +168,8 @@ NSString *kAPIVersion = @"v1";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSAssert([[AUBRequest sharedInstance] serverToken], @"Server token must be provided for requests");
-    NSString *serverToken = [NSString stringWithFormat:@"Token %@", [[AUBRequest sharedInstance] serverToken]];
+    NSAssert([[AUBRequestManager sharedInstance] serverToken], @"Server token must be provided for requests");
+    NSString *serverToken = [NSString stringWithFormat:@"Token %@", [[AUBRequestManager sharedInstance] serverToken]];
     [manager.requestSerializer setValue:serverToken forHTTPHeaderField:@"Authorization"];
     return manager;
 }
