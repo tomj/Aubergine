@@ -16,9 +16,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ```objc
 #import <Aubergine/Aubergine.h>
 
-[[AUBRequest sharedInstance] setServerToken:@"YOUR_SERVER_TOKEN"];
+AUBRequestManager *manager = [AUBRequestManager sharedInstance];
+[manager setServerToken:@"YOUR_SERVER_TOKEN"];
+
 CLLocationCoordinate2D location = CLLocationCoordinate2DMake(40.7356, -73.9906);
-[AUBRequest getProductsForLocation:location success:^(NSArray *result) {
+[manager getProductsForLocation:location success:^(NSArray *result) {
     NSLog(@"%@", result);
 } failure:^(NSError *error) {
     NSLog(@"%@", error);
