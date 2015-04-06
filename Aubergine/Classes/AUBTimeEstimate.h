@@ -6,7 +6,6 @@
 //
 
 #import <Mantle/Mantle.h>
-#import <UIKit/UIKit.h>
 
 @interface AUBTimeEstimate : MTLModel <MTLJSONSerializing>
 
@@ -19,5 +18,13 @@
 
 /// ETA for the product (in seconds). Always show estimate in minutes.
 @property (nonatomic, assign) NSUInteger estimate;
+
+
+///
+/// Convenience
+///
+
+/// Estimate rounded up to whole minute with 'minute[s]' appended, "6 minutes" e.g.
+@property (nonatomic, copy, readonly) NSString *estimateString;
 
 @end

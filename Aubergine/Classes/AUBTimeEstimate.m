@@ -25,4 +25,19 @@
     }
 }
 
+- (NSString *)estimateString {
+    
+    unsigned long estimate = (self.estimate/60) + 1;
+    
+    NSString *str = nil;
+    if (estimate == 1) {
+       str = [NSString stringWithFormat:@"%lu minute", estimate];
+    } else {
+        str = [NSString stringWithFormat:@"%lu minutes", estimate];
+    }
+    
+    return str;
+}
+
+
 @end
