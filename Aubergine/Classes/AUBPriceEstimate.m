@@ -25,13 +25,13 @@
 
 - (void)setNilValueForKey:(NSString *)key {
     if ([key isEqualToString:@"lowEstimate"]) {
-        self.lowEstimate = 0;
+        _lowEstimate = 0;
     } else if ([key isEqualToString:@"highEstimate"]) {
-        self.highEstimate = 0;
+        _highEstimate = 0;
     } else if ([key isEqualToString:@"surgeMultiplier"]) {
-        self.surgeMultiplier = 1.0;
+        _surgeMultiplier = 1.0;
     } else if ([key isEqualToString:@"distance"]) {
-        self.distance = 0.0;
+        _distance = 0.0;
     } else {
         [super setNilValueForKey:key];
     }

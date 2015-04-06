@@ -25,7 +25,7 @@ static NSString *const kAUBRequestManagerServerTokenKey = @"AUBRequestManagerSer
 
 - (instancetype)initWithServerToken:(NSString *)serverToken;
 
-@property (nonatomic, copy) NSString *serverToken;
+@property (nonatomic, copy, readonly) NSString *serverToken;
 
 /// Return an array of AUBProduct objects if successful
 - (void)getProductsForLocation:(CLLocationCoordinate2D)location

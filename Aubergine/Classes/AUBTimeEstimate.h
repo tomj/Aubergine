@@ -11,13 +11,13 @@
 
 /// Unique identifier representing a specific product for a given latitude & longitude.
 /// For example, uberX in San Francisco will have a different productID than uberX in Los Angeles.
-@property (nonatomic, copy) NSString *productID;
+@property (nonatomic, copy, readonly) NSString *productID;
 
 /// Display name of product.
-@property (nonatomic, copy) NSString *displayName;
+@property (nonatomic, copy, readonly) NSString *displayName;
 
 /// ETA for the product (in seconds). Always show estimate in minutes.
-@property (nonatomic, assign) NSUInteger estimate;
+@property (nonatomic, assign, readonly) NSUInteger estimate;
 
 
 ///

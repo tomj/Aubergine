@@ -19,7 +19,7 @@
 
 - (void)setNilValueForKey:(NSString *)key {
     if ([key isEqualToString:@"estimate"]) {
-        self.estimate = 0;
+        _estimate = 0;
     } else {
         [super setNilValueForKey:key];
     }
