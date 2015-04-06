@@ -7,6 +7,8 @@
 
 #import "AUBProduct.h"
 
+#import "AUBPriceDetail.h"
+
 @implementation AUBProduct
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -16,6 +18,7 @@
              @"displayName": @"display_name",
              @"capacity": @"capacity",
              @"imageURL": @"image",
+             @"priceDetails": @"price_details"
              };
 }
 
@@ -23,9 +26,13 @@
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
++ (NSValueTransformer *)priceDetailsJSONTransformer {
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:AUBPriceDetail.class];
+}
+
 - (void)setNilValueForKey:(NSString *)key {
     if ([key isEqualToString:@"capacity"]) {
-        self.capacity = 0;
+        _capacity = 0;
     } else {
         [super setNilValueForKey:key];
     }
