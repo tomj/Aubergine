@@ -1,5 +1,7 @@
 # Aubergine
 
+[![Join the chat at https://gitter.im/tomj/Aubergine](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tomj/Aubergine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Aubergine is an iOS SDK for the [Uber API](https://developer.uber.com).
 
 Aubergine uses the [Mantle](https://github.com/Mantle/Mantle) framework for JSON serialization in conjunction with [AFNetworking](https://github.com/AFNetworking/AFNetworking).  Feel free to submit PR's and we'd love to hear if you're using it in your own project.
