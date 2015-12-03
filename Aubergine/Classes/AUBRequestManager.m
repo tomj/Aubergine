@@ -7,10 +7,11 @@
 
 #import "AUBRequestManager.h"
 
-#import "AUBProduct.h"
+#import "AUBMe.h"
 #import "AUBPriceEstimate.h"
-#import "AUBTimeEstimate.h"
+#import "AUBProduct.h"
 #import "AUBPromotion.h"
+#import "AUBTimeEstimate.h"
 
 NSString *kURL = @"https://api.uber.com";
 NSString *kAPIVersion = @"v1";
@@ -62,10 +63,12 @@ NSString *kAPIVersion = @"v1";
             AUBProduct *product = [MTLJSONAdapter modelOfClass:AUBProduct.class fromJSONDictionary:obj error:&error];
             if (!error && product) {
                 [products addObject:product];
+                NSArray *result = [products copy];
+                success(result);
+            } else {
+                failure(error);
             }
         }];
-        NSArray *result = [products copy];
-        success(result);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
@@ -98,10 +101,12 @@ NSString *kAPIVersion = @"v1";
             AUBPriceEstimate *priceEstimate = [MTLJSONAdapter modelOfClass:AUBPriceEstimate.class fromJSONDictionary:obj error:&error];
             if (!error && priceEstimate) {
                 [priceEstimates addObject:priceEstimate];
+                NSArray *result = [priceEstimates copy];
+                success(result);
+            } else {
+                failure(error);
             }
         }];
-        NSArray *result = [priceEstimates copy];
-        success(result);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
@@ -135,10 +140,12 @@ NSString *kAPIVersion = @"v1";
             AUBTimeEstimate *timeEstimate = [MTLJSONAdapter modelOfClass:AUBTimeEstimate.class fromJSONDictionary:obj error:&error];
             if (!error && timeEstimate) {
                 [timeEstimates addObject:timeEstimate];
+                NSArray *result = [timeEstimates copy];
+                success(result);
+            } else {
+                failure(error);
             }
         }];
-        NSArray *result = [timeEstimates copy];
-        success(result);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
@@ -167,9 +174,34 @@ NSString *kAPIVersion = @"v1";
         NSMutableArray *promotions = [[NSMutableArray alloc] init];
         if (!error && promotion) {
             [promotions addObject:promotion];
+            NSArray *result = [promotions copy];
+            success(result);
+        } else {
+            failure(error);
         }
-        NSArray *result = [promotions copy];
-        success(result);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)getMeSuccess:(AUBRequestManagerGetMeSuccess)success
+             failure:(AUBRequestManagerGetMeFailure)failure {
+    
+    NSParameterAssert(success);
+    NSParameterAssert(failure);
+    
+    NSString *URL = [[kURL stringByAppendingPathComponent:kAPIVersion]
+                     stringByAppendingPathComponent:@"me"];
+    
+    [self GET:URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSError *error = nil;
+        AUBMe *me = [MTLJSONAdapter modelOfClass:AUBMe.class fromJSONDictionary:responseObject error:&error];
+        if (!error && me) {
+            success(me);
+        } else {
+            failure(error);
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);

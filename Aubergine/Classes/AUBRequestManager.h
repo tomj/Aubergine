@@ -9,8 +9,13 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AFNetworking/AFNetworking.h>
 
+@class AUBMe;
+
 typedef void (^AUBRequestManagerSuccess) (NSArray *result);
 typedef void (^AUBRequestManagerFailure) (NSError *error);
+
+typedef void (^AUBRequestManagerGetMeSuccess) (AUBMe *result);
+typedef void (^AUBRequestManagerGetMeFailure) (NSError *error);
 
 static NSString *const kAUBRequestManagerServerTokenKey = @"AUBRequestManagerServerTokenKey";
 
@@ -50,5 +55,9 @@ static NSString *const kAUBRequestManagerServerTokenKey = @"AUBRequestManagerSer
                           endLocation:(CLLocationCoordinate2D)endLocation
                               success:(AUBRequestManagerSuccess)success
                               failure:(AUBRequestManagerFailure)failure;
+
+/// Return information about the Uber user that has authorized with the application.
+- (void)getMeSuccess:(AUBRequestManagerGetMeSuccess)success
+             failure:(AUBRequestManagerGetMeFailure)failure;
 
 @end

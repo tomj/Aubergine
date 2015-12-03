@@ -110,5 +110,27 @@ static const NSTimeInterval kConnectionTimeout = 20.0;
     }];
 }
 
+//FIXME: TJ - add an OAuth routine here
+/*
+- (void)testUserRequest {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:@"success"];
+    
+    [self.requestManager getMeSuccess:^(AUBMe *result) {
+        XCTAssert(result, @"Pass");
+        [expectation fulfill];
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+        XCTAssert(NO, @"Fail");
+        [expectation fulfill];
+    }];
+    
+    
+    [self waitForExpectationsWithTimeout:kConnectionTimeout handler:^(NSError *error) {
+        if (error) XCTAssertFalse(@"failed");
+    }];
+}
+ */
+
 @end
 

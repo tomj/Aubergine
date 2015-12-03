@@ -20,19 +20,23 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Aubergine (0.0.5):
-    - AFNetworking (~> 2.4)
-    - Mantle (~> 1.5.4)
+  - Aubergine (0.0.6):
+    - AFNetworking (~> 2.6.3)
+    - Mantle (~> 1.5.6)
   - Mantle (1.5.6):
     - Mantle/extobjc (= 1.5.6)
   - Mantle/extobjc (1.5.6)
 
 DEPENDENCIES:
-  - Aubergine
+  - Aubergine (from `../`)
+
+EXTERNAL SOURCES:
+  Aubergine:
+    :path: "../"
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  Aubergine: d4106f10773d770579b3b7dcfd4807ffd2b96282
+  Aubergine: e705d07cb0e45c0db26a28156ff7f38434bd0982
   Mantle: a197db93e0f1e36194b1fdbc078219a8492eaef2
 
 COCOAPODS: 0.38.2
