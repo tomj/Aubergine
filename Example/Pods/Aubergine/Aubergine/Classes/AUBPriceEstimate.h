@@ -11,32 +11,32 @@
 
 /// Unique identifier representing a specific product for a given latitude & longitude.
 /// For example, uberX in San Francisco will have a different prod than uberX in Los Angeles.
-@property (nonatomic, copy) NSString *productID;
+@property (nonatomic, copy, readonly) NSString *productID;
 
 /// ISO 4217 currency code.
-@property (nonatomic, copy) NSString *currencyCode;
+@property (nonatomic, copy, readonly) NSString *currencyCode;
 
 /// Display name of product.
-@property (nonatomic, copy) NSString *displayName;
+@property (nonatomic, copy, readonly) NSString *displayName;
 
 /// Formatted string of estimate in local currency of the start location.
 /// Estimate could be a range, a single number (flat rate) or "Metered" for TAXI.
-@property (nonatomic, copy) NSString *estimate;
+@property (nonatomic, copy, readonly) NSString *estimate;
 
 /// Lower bound of the estimated price.
-@property (nonatomic, assign) NSUInteger lowEstimate;
+@property (nonatomic, assign, readonly) NSUInteger lowEstimate;
 
 /// Upper bound of the estimated price.
-@property (nonatomic, assign) NSUInteger highEstimate;
+@property (nonatomic, assign, readonly) NSUInteger highEstimate;
 
 /// Expected surge multiplier. Surge is active if surge_multiplier is greater than 1.
 /// Price estimate already factors in the surge multiplier.
-@property (nonatomic, assign) double surgeMultiplier;
+@property (nonatomic, assign, readonly) double surgeMultiplier;
 
 /// Expected activity duration (in seconds). Always show duration in minutes.
-@property (nonatomic, assign) NSUInteger duration;
+@property (nonatomic, assign, readonly) NSUInteger duration;
 
 /// Expected activity distance (in miles).
-@property (nonatomic, assign) double distance;
+@property (nonatomic, assign, readonly) double distance;
 
 @end

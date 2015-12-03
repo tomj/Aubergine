@@ -7,8 +7,6 @@
 
 #import "AUBRequestManager.h"
 
-
-
 #import "AUBProduct.h"
 #import "AUBPriceEstimate.h"
 #import "AUBTimeEstimate.h"
@@ -18,6 +16,18 @@ NSString *kURL = @"https://api.uber.com";
 NSString *kAPIVersion = @"v1";
 
 @implementation AUBRequestManager
+
++ (instancetype)sharedInstance {
+    static AUBRequestManager *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *serverToken = infoDictionary[kAUBRequestManagerServerTokenKey];
+        NSAssert([serverToken isKindOfClass:[NSString class]] && [serverToken length] > 0, @"Server token must be a string with length > 0");
+        sharedInstance = [[self alloc] initWithServerToken:serverToken];
+    });    
+    return sharedInstance;
+}
 
 - (instancetype)initWithServerToken:(NSString *)serverToken {
     NSParameterAssert(serverToken);

@@ -7,22 +7,24 @@
 
 #import <Mantle/Mantle.h>
 
+@class AUBPriceDetails;
+
 @interface AUBProduct : MTLModel <MTLJSONSerializing>
 
 /// Unique identifier representing a specific product for a given latitude & longitude.
 /// For example, uberX in San Francisco will have a different productID than uberX in Los Angeles.
-@property (nonatomic, copy) NSString *productID;
+@property (nonatomic, copy, readonly) NSString *productID;
 
-@property (nonatomic, copy) NSString *productDescription;
+@property (nonatomic, copy, readonly) NSString *productDescription;
 
-@property (nonatomic, copy) NSString *displayName;
+@property (nonatomic, copy, readonly) NSString *displayName;
 
 /// Capacity of product. For example, 4 people.
-@property (nonatomic, assign) NSUInteger capacity;
+@property (nonatomic, assign, readonly) NSUInteger capacity;
 
 /// Image URL representing the product.
-@property (nonatomic, strong) NSURL *imageURL;
+@property (nonatomic, strong, readonly) NSURL *imageURL;
 
-@property (nonatomic, copy, readonly) NSDate *retrievedAt;
+@property (nonatomic, strong, readonly) AUBPriceDetails *priceDetails;
 
 @end

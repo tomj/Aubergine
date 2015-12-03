@@ -19,10 +19,25 @@
 
 - (void)setNilValueForKey:(NSString *)key {
     if ([key isEqualToString:@"estimate"]) {
-        self.estimate = 0;
+        _estimate = 0;
     } else {
         [super setNilValueForKey:key];
     }
 }
+
+- (NSString *)estimateString {
+    
+    unsigned long estimate = (self.estimate/60) + 1;
+    
+    NSString *str = nil;
+    if (estimate == 1) {
+       str = [NSString stringWithFormat:@"%lu minute", estimate];
+    } else {
+        str = [NSString stringWithFormat:@"%lu minutes", estimate];
+    }
+    
+    return str;
+}
+
 
 @end
